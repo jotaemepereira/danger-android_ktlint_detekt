@@ -47,8 +47,8 @@ module Danger
       ktlint_issues = read_issues_from_report(ktlint_report_file)
       detekt_issues = read_issues_from_report(detekt_report_file)
 
-      print(ktlint_issues)
-      print(detekt_issues)
+      report_issues(ktlint_issues)
+      report_issues(detekt_issues)
     end
 
     ### PRIVATE METHODS
@@ -66,6 +66,30 @@ module Danger
       report = Oga.parse_xml(file)
 
       report.xpath('//file')
+    end
+
+    def report_issues(issues)
+      dir = "#{Dir.pwd}/"
+
+      issues.each do |file|
+        location = file.get('name')
+        filename = location.gsub(dir, "")
+
+        file.xpath('error').each do |error|
+          severity = error.get('severity')
+          message = error.get('message')
+          line = error.get('line')
+
+          if severity == 'error'
+            send('fail', message, file: filename, line: line)
+          elsif severity == 'warning'
+            send('warn', message, file: filename, line: line)
+          else
+            send('message', message, file: filename, line: line)
+          end
+
+        end
+      end
     end
 
     # def message_for_issues(issues)
