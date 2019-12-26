@@ -31,11 +31,17 @@ module Danger
 
     ### PUBLIC METHODS
 
-    # Method to report ktlint messages
+    # Method to report ktlint + detekt messages
     # @return  [void]
     def report
-      check_file_integrity(ktlint_report_file)
-      check_file_integrity(detekt_report_file)
+      ktlint_report_file_complete = "#{Dir.pwd}/#{ktlint_report_file}"
+      detekt_report_file_complete= "#{Dir.pwd}/#{detekt_report_file}"
+
+      puts(ktlint_report_file_complete)
+      puts(detekt_report_file_complete)
+
+      check_file_integrity(ktlint_report_file_complete)
+      check_file_integrity(detekt_report_file_complete)
 
       ktlint_issues = read_issues_from_report(ktlint_report_file)
       detekt_issues = read_issues_from_report(detekt_report_file)
