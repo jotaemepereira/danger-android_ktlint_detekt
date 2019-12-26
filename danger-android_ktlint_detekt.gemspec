@@ -5,18 +5,20 @@ require 'android_ktlint_detekt/gem_version.rb'
 
 Gem::Specification.new do |spec|
   spec.name          = 'danger-android_ktlint_detekt'
-  spec.version       = AndroidKtlintDetekt::VERSION
+  spec.version       = 0.0.1
   spec.authors       = ['Juan Manuel Pereira']
   spec.email         = ['juanmanuel.pereira1@gmail.com']
-  spec.description   = %q{A short description of danger-android_ktlint_detekt.}
+  spec.description   = %q{Ktlint and Detekt plugin for Android projects.}
   spec.summary       = %q{A longer description of danger-android_ktlint_detekt.}
-  spec.homepage      = 'https://github.com/Juan Manuel Pereira/danger-android_ktlint_detekt'
+  spec.homepage      = 'https://github.com/jotaemepereira/danger-android_ktlint_detekt'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files`.split($/)
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ['lib']
+
+  spec.add_dependency 'oga'
 
   spec.add_runtime_dependency 'danger-plugin-api', '~> 1.0'
 
