@@ -17,7 +17,7 @@ module Danger
     attr_accessor :ktlint_report_file
 
     def ktlint_report_file
-      return @ktlint_report_file || "app/build/reports/ktlint/ktlintMainSourceSetCheck.xml"
+      return @ktlint_report_file || "beacon-ui/build/reports/ktlint/ktlintMainSourceSetCheck.xml"
     end
 
     # A getter for `detekt_report_file`.
@@ -26,7 +26,7 @@ module Danger
     attr_accessor :detekt_report_file
 
     def detekt_report_file
-      return @detekt_report_file || "app/build/reports/detekt.xml"
+      return @detekt_report_file || "beacon-ui/build/reports/detekt.xml"
     end
 
     ### PUBLIC METHODS
@@ -36,9 +36,6 @@ module Danger
     def report
       ktlint_report_file_complete = "#{Dir.pwd}/#{ktlint_report_file}"
       detekt_report_file_complete= "#{Dir.pwd}/#{detekt_report_file}"
-
-      puts(ktlint_report_file_complete)
-      puts(detekt_report_file_complete)
 
       check_file_integrity(ktlint_report_file_complete)
       check_file_integrity(detekt_report_file_complete)
@@ -67,12 +64,14 @@ module Danger
     end
 
     def report_issues(issues)
+      target_files = (git.modified_files - git.deleted_files) + git.added_files
       dir = "#{Dir.pwd}/"
 
       issues.each do |file|
         location = file.get("name")
         filename = location.gsub(dir, "")
 
+        next unless (target_files.include? filename)
         file.xpath("error").each do |error|
           severity = error.get("severity")
           message = error.get("message")
