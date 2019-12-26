@@ -1,6 +1,6 @@
-# danger-android_ktlint_detekt
+# Danger plugin for ktlint and detekt on Android
 
-A description of danger-android_ktlint_detekt.
+It helps users report ktlint and detekt issues via Danger.
 
 ## Installation
 
@@ -8,8 +8,13 @@ A description of danger-android_ktlint_detekt.
 
 ## Usage
 
-    Methods and attributes from this plugin are available in
-    your `Dangerfile` under the `android_ktlint_detekt` namespace.
+    Just add this to your Dangerfile:
+
+    ```
+    android_ktlint_detekt.ktlint_report_file = path_to_ktlint_xml
+    android_ktlint_detekt.detekt_report_file = path_to_detekt_xml
+    android_ktlint_detekt.report(inline_mode: true)
+    ```
 
 ## Development
 

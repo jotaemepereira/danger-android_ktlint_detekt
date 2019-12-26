@@ -2,9 +2,6 @@
 
 # If you don't like these settings, just delete this file :)
 
-AllCops:
-  TargetRubyVersion: 2.0
-
 Style/StringLiterals:
   EnforcedStyle: double_quotes
   Enabled: true

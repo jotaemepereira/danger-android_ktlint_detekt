@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Juan Manuel Pereira']
   spec.email         = ['juanmanuel.pereira1@gmail.com']
   spec.description   = %q{Ktlint and Detekt plugin for Android projects.}
-  spec.summary       = %q{A longer description of danger-android_ktlint_detekt.}
+  spec.summary       = %q{Ktlint and Detekt plugin for Android projects.}
   spec.homepage      = 'https://github.com/jotaemepereira/danger-android_ktlint_detekt'
   spec.license       = 'MIT'
 
@@ -23,7 +23,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'danger-plugin-api', '~> 1.0'
 
   # General ruby development
-  spec.add_development_dependency 'bundler', '~> 1.3'
+  spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'rake', '~> 10.0'
 
   # Testing support
