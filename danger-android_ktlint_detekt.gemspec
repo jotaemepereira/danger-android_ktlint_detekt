@@ -5,7 +5,7 @@ require 'android_ktlint_detekt/gem_version.rb'
 
 Gem::Specification.new do |spec|
   spec.name          = 'danger-android_ktlint_detekt'
-  spec.version       = '0.0.3'
+  spec.version       = '0.0.4'
   spec.authors       = ['Juan Manuel Pereira']
   spec.email         = ['juanmanuel.pereira1@gmail.com']
   spec.description   = %q{Ktlint and Detekt plugin for Android projects.}

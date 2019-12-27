@@ -77,12 +77,10 @@ module Danger
           message = error.get("message")
           line = error.get("line")
 
-          if severity == "error"
-            send("fail", message, file: filename, line: line)
-          elsif severity == "warning"
-            send("warn", message, file: filename, line: line)
+          if severity == "error" || severity == "warning"
+            warn(message, file: filename, line: line)
           else
-            send("message", message, file: filename, line: line)
+            message(message, file: filename, line: line)
           end
         end
       end
